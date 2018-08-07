@@ -133,10 +133,7 @@ namespace LibraryServices
             }
 
             var item = _context.LibraryAssets
-                .Include(a => a.Status)
-                .First(a => a.Id == assetId);
-
-            _context.Update(item);
+                .FirstOrDefault(a => a.Id == assetId);
 
             UpdateAssetStatus(assetId, "Checked Out");
 
